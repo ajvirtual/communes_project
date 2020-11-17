@@ -12,7 +12,7 @@
             return $this->all_commune;
         }
         
-        public static function communeNumber() {
+        public function communeNumber() {
             return count($this->all_commune);
         }
 
