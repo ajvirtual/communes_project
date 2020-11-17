@@ -73,19 +73,19 @@
             return $fokontanyCount / $CommuneCount;
         }
 
-        public function maxInArray(array $arrayInput) {
+        public function maxInArray(array $arrayInput, $option = 'ID') {
             if(!empty($arrayInput)) {
-                //  $max = $arrayInput[0];
-                //  for($i = 1; $i < count($arrayInput); $i++) {
-                //      if($max < $arrayInput[$i]) $max = $arrayInput[$i];
-                //  }
-                //  return $max;
+                
                  $all_max = [0];
                  $key_first = array_keys($arrayInput)[0];
                  $max = $arrayInput[$key_first];
                  foreach($arrayInput as $key => $val) {
                      if($val > $max) {
-                        $m = ['max' => $val, 'name' => $this->getFonkontanyById($key)];
+                       if($option === 'ID') {
+                          $m = ['max' => $val, 'name' => $this->getFonkontanyById($key)];
+                       } elseif($option === 'NAMED') {
+                          $m = ['max' => $val, 'name' => $key];
+                       }
                         // if($all_max[0]['max'] === $val ){
                         //     var_dump($all_max);
                         //     $all_max[] = $m;
@@ -99,7 +99,11 @@
                         $all_max[] = $m;
                         $max = $val;
                      } elseif($all_max[0]['max'] === $val) {
-                        $m = ['max' => $val, 'name' => $this->getFonkontanyById($key)];
+                        if($option === 'ID') {
+                            $m = ['max' => $val, 'name' => $this->getFonkontanyById($key)];
+                         } elseif($option === 'NAMED') {
+                            $m = ['max' => $val, 'name' => $key];
+                         }
                         // var_dump($all_max);
                         $all_max[] = $m;
                      }
@@ -161,10 +165,10 @@
             return $all_max;
         }
 
-        public function shortestString(array $string) {
+        public function shortestString(array $fktn) {
             $all_min = [];
-            $min = strlen($string[0]['name']);
-            foreach($string as $key => $val) {
+            $min = strlen($fktn[0]['name']);
+            foreach($fktn as $key => $val) {
                 if(strlen($val['name']) < $min) {
                     $all_min = [];
                     $all_min[] = $val['name'];
@@ -175,5 +179,36 @@
             }
             return $all_min;
         }
+
+        public function topInArray(array $arrayInput, $top = 1) {
+            arsort($arrayInput);
+            $new_array = [];
+            $i = 0;
+            foreach($arrayInput as $key => $val) {
+                if($top === $i) break;
+
+                $new_array[$key] = $val;
+                $i++;
+            }
+            
+            return $new_array;
+        }
+
+        public function occFktn(array $fktn) {
+            $repeated = [];
+            $max = [];
+            foreach($fktn as $key => $val) {
+                if(array_key_exists($val['name'], $repeated)) {
+                    $repeated[$val['name']]++;
+                } else {
+                    $repeated[$val['name']] = 1;
+                }
+            }
+            $m = max($repeated);
+            $max = $this->topInArray($repeated, 10);
+            // return '<strong>fokontany le plus repété : </strong>'.array_keys($repeated, $m)[0].' (<strong> repetition : </strong>'.$m.' )';
+            return $max;
+        }
+
     }
 ?>

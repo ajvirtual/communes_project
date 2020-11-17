@@ -5,7 +5,6 @@
     $parsed = json_decode($content);
 
     $mada = new Madagascar($parsed);
-    
     // $_id = [];
     // $name = [];
     // $fokontany = [];
@@ -94,16 +93,19 @@
         }
         
         $all_f = $mada->getAllFokontany();
-            // echo '<strong>le fokontany possedant plus de lettre à Madagascar est : </strong>';
-            // foreach($mada->tallestString($all_f) as $tf) {
-            //     echo $tf.' '.strlen($tf).'<br>';
-            // } 
+        // echo '<strong>le fokontany possedant plus de lettre à Madagascar est : </strong>';
+        // foreach($mada->tallestString($all_f) as $tf) {
+        //     echo $tf.' '.strlen($tf).'<br>';
+        // } 
 
         echo '<strong>le fokontany possedant moins de lettre à Madagascar est : </strong>';
         foreach($mada->shortestString($all_f) as $tf) {
             echo $tf.' ('.strlen($tf).' lettres)<br>';
         } 
-
+        echo 'top 10 des fokontany les plus repétés à Madagascar : <br>';
+        foreach($mada->occFktn($all_f) as $key => $val) {
+            echo "$key : $val <br>";
+        }
         ?>  
     </div>
     <div>
