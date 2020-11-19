@@ -194,7 +194,7 @@
             return $new_array;
         }
 
-        public function occFktn(array $fktn) {
+        public function occFktn(array $fktn, $top = 1) {
             $repeated = [];
             $max = [];
             foreach($fktn as $key => $val) {
@@ -205,7 +205,7 @@
                 }
             }
             $m = max($repeated);
-            $max = $this->topInArray($repeated, 10);
+            $max = $this->topInArray($repeated, $top);
             // return '<strong>fokontany le plus repété : </strong>'.array_keys($repeated, $m)[0].' (<strong> repetition : </strong>'.$m.' )';
             return $max;
         }

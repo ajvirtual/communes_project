@@ -5,55 +5,9 @@
     $parsed = json_decode($content);
 
     $mada = new Madagascar($parsed);
-    // $_id = [];
-    // $name = [];
-    // $fokontany = [];
 
-    // foreach($parsed as $c) {
-    //     array_push($_id, $c->_id);
-    //     array_push($name, $c->name);
-    //     array_push($fokontany, $c->fokontany);
-    // }
-    // // print_r($_id);
-    // // echo '<br>';
-    // // echo '<br>';
-
-    // // print_r($name);
-    // // echo '<br>';
-    // // echo '<br>';
-    // // print_r($fokontany);
-
-    // // moyenne 
-    
-    // $FonkontanyParCom = [];
-    // $fonkontanyRepeat = [];
-    // foreach($parsed as $c) {
-    //     // array_push($_id, $c->_id);
-    //     // array_push($name, $c->name);
-    //     // array_push($fokontany, $c->fokontany);
-    //     $f = (array) $c->fokontany;
-    //     $fonkontany = [];
-    //     $num = 0;
-    //     foreach($f as $index => $fs) {
-    //         // if(in_array($fs->name, $FonkontanyParCom)) {
-    //         //     array_splice($f, $index);
-    //         //     // $fonkontanyRepeat[$fs->name] += 1;
-    //         // } else {
-    //         //     array_push($FonkontanyParCom, $fs->name);
-    //         // }
-    //         array_push($FonkontanyParCom, $fs->name);
-    //     }   
-    // }
-
-    // $maxf = max($fonkontanyRepeat);
-    // echo $maxf;
-
-    // $numCommune = count($parsed);
-    // $numFonkontanyParCom = count($FonkontanyParCom);
-    // $moyenne = $numFonkontanyParCom / $numCommune;
-    // // moyenne
-    
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,26 +28,39 @@
         $l = $mada->FktnMostOccurenceChar();
         echo '<strong>nombre total de tous les communes : </strong>'.count($mada->getAllCommune()).'<br>';
         echo '<strong>nombre total de tous les fokontany : </strong>'.count($mada->getAllFokontany()).'<br>';
-        if($mada->FktnMostOccurenceChar()[0]) {
-            foreach($mada->FktnMostOccurenceChar() as $key => $val) {
-                echo 'fokontany : '.$val['name'].'<br>';
-                if(strlen($_POST['carac']) === 1) {
-                    echo 'occurence du lettre '.$_POST['carac'].' : '.$val['max'].' fois<br>';
-                } else {
-                    echo 'occurence du mot '.$_POST['carac'].' : '.$val['max'].' fois<br>';
+        if(isset($_POST['carac'])) {
+            if($mada->FktnMostOccurenceChar()[0]) {
+                echo 'nombre : '.count($mada->FktnMostOccurenceChar()).'<br>';
+
+                foreach($mada->FktnMostOccurenceChar() as $key => $val) {
+                    echo 'fokontany : '.$val['name'].'<br>';
+                    if(strlen($_POST['carac']) === 1) {
+                        echo 'occurence du lettre '.$_POST['carac'].' : '.$val['max'].' fois<br>';
+                    } else {
+                        echo 'occurence du mot '.$_POST['carac'].' : '.$val['max'].' fois<br>';
+                    }
+                    echo '<hr>';
                 }
-                echo '<hr>';
-            }
-        } else {
-            if(strlen($_POST['carac']) === 1) {
-                echo 'aucun fokontany ne possède cette lettre';
             } else {
-                echo 'aucun fokontany ne possède ce mot';
+                if(strlen($_POST['carac']) === 1) {
+                    echo 'aucun fokontany ne possède cette lettre';
+                } elseif(strlen($_POST['carac']) > 1) {
+                    echo 'aucun fokontany ne possède ce mot<br>';
+                } else {
+                    echo 'veuillez saisir quelque chose si vous voulez avoir du resultat<br>';
+                }
             }
         }
         
         $all_f = $mada->getAllFokontany();
-        // echo '<strong>le fokontany possedant plus de lettre à Madagascar est : </strong>';
+        // if(count($mada->tallestString($all_f)) > 1) {
+        //     echo 'nombre de resultat : '.count($mada->tallestString($all_f)).'<br>';
+        //     echo '<strong>les fokontany possedant plus de lettre à Madagascar sont : </strong><br>';     
+        // } else {
+        //     echo 'nombre de resultat : '.count($mada->tallestString($all_f));
+        //     echo '<strong>le fokontany possedant plus de lettre à Madagascar est : </strong>';
+        // }
+        
         // foreach($mada->tallestString($all_f) as $tf) {
         //     echo $tf.' '.strlen($tf).'<br>';
         // } 
@@ -102,8 +69,8 @@
         foreach($mada->shortestString($all_f) as $tf) {
             echo $tf.' ('.strlen($tf).' lettres)<br>';
         } 
-        echo 'top 10 des fokontany les plus repétés à Madagascar : <br>';
-        foreach($mada->occFktn($all_f) as $key => $val) {
+        echo 'top '.count($mada->occFktn($all_f, 2)).' des fokontany les plus repétés à Madagascar : <br>';
+        foreach($mada->occFktn($all_f, 2) as $key => $val) {
             echo "$key : $val <br>";
         }
         ?>  
@@ -120,8 +87,8 @@
    </div>
     <table>
         <thead>
-            <td>id</td>
-            <td>name</td>
+            <td>commune id</td>
+            <td>commune name</td>
             <td>fokontany</td>
         </thead>
         <tbody>
