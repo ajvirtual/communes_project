@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+}
+header {
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    line-height: 50px;
+    color: white;
+}
+header .logo {
+    margin: 1em;
+    text-transform: capitalize;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
+}
+header .menu {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    width: 30%;
+    position: absolute;
+    top: 0;
+    right: 50%;
+    background: #2a2a2d;
+    list-style: none;
+    cursor: pointer;
+}
+header .menu li{
+    margin-right: 2em;
+    font-family: sans-serif;
+    position: relative;
+}
+header .menu li:last-of-type {
+    margin-right: initial !important;
+}
+header .menu li::after {
+    
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    width: 100%;
+    z-index: 100;
+    
+}
+
+header .menu li:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: white;
+    height: 5px;
+    width: 100%;
+    z-index: 100;
+    transition: all linear .2s;
+}
+
+header .menu a {
+    text-decoration: none;
+    color: white;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+}
+thead {
+    background: rgb(13, 204, 140);
+    text-transform: uppercase;
+}
+table, tr, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 19px;
+}
+.fokontany-container {
+    margin: .4em;
+}
+.f_id, .f_name{
+    display: flex;
+    
+}
+.f_label {
+    color: #089a5d;
+    text-decoration: underline;
+}

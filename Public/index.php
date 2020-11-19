@@ -1,11 +1,5 @@
 <?php
-    require_once 'madaClass.php';
-
-    $content = file_get_contents('communes.json');
-    $parsed = json_decode($content);
-
-    $mada = new Madagascar($parsed);
-
+    require_once '../app.php';
 ?>
 
 <!DOCTYPE html>
@@ -13,10 +7,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>communes</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>communes | Madagascar</title>
 </head>
 <body>
+    <header>
+        <strong class="logo">Madagascar</strong>
+        <nav>
+            <ul class="menu">
+                <li><a href="/region">region</a></li>
+                <li><a href="/district">district</a></li>
+                <li><a href="/communes">communes</a></li>
+                <li><a href="/fokontany">fokontany</a></li>
+            </ul>
+        </nav>
+    </header>
     <h2></h2>
     <div>
         <?php 
