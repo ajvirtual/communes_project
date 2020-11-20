@@ -44,8 +44,6 @@ header .menu li::after {
     left: 0;
     height: 5px;
     width: 100%;
-    z-index: 100;
-    
 }
 
 header .menu li:hover::after {
@@ -56,8 +54,7 @@ header .menu li:hover::after {
     background: white;
     height: 5px;
     width: 100%;
-    z-index: 100;
-    transition: all linear .2s;
+    transition: all linear .1s;
 }
 
 header .menu a {
