@@ -1,7 +1,9 @@
 <?php 
 namespace Controllers;
 
-class RegionController {
+use Controllers\Madagascar;
+
+class RegionController extends Madagascar {
     public function executeIndex() {
         
     }

@@ -3,7 +3,11 @@
     <div class="left-side-stat">
         <ul>
             <li>
-            <?php echo '<span>nombre total de tous les communes : </span>'.count($all_communes).'<br>';?>
+            <?php
+               if(isset($all_communes)) {
+                   echo '<span>nombre total de tous les communes : </span>'.count($all_communes).'<br>';
+               } 
+            ?>
             </li>
         </ul>
     </div>
@@ -16,7 +20,7 @@
         </thead>
         <tbody>
             <?php 
-                for($i = 0; $i < count($mada->getAllcommune()); $i++) {
+                for($i = 0; $i < count($all_communes); $i++) {
                     echo "<tr>
                             <td>".$mada->getCommuneIdByIndex($i)."</td>
                             <td>".$mada->getCommuneNameByIndex($i)."</td>

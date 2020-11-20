@@ -8,6 +8,7 @@ class Madagascar {
 
     public function __construct($content) {
         $this->all_commune = $content;
+
     }
     
     public function getAllcommune() {
