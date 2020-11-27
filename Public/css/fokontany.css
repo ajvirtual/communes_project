@@ -1,8 +1,23 @@
+.main-container {
+    display: flex;
+}
 .left-side-stat {
     position: absolute;
     top: 50px;
     left: 0;
     background: #e9eaea;
+    width: 30%;
+}
+.main-content {
+    width: 70%;
+}
+.form-container {
+    width: max-content;
+    position: absolute;
+    top: 15%;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 .left-side-stat ul {
     padding: 0 1em;
@@ -10,10 +25,7 @@
 .left-side-stat li {
     list-style: none;
 }
-.form-container {
+
+/* .other-container {
     position: absolute;
-    top: 200px;
-}
-.other-container {
-    position: absolute;
-}
+} */
