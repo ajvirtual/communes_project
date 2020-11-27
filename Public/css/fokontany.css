@@ -1,0 +1,19 @@
+.left-side-stat {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background: #e9eaea;
+}
+.left-side-stat ul {
+    padding: 0 1em;
+}
+.left-side-stat li {
+    list-style: none;
+}
+.form-container {
+    position: absolute;
+    top: 200px;
+}
+.other-container {
+    position: absolute;
+}

@@ -1,6 +1,30 @@
+
+body {
+    font-family: sans-serif;
+}
+table {
+    width: 100%;
+    text-align: center;
+}
+thead {
+    background: black;
+    color: white;
+    text-transform: uppercase;
+}
+table, tr, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 19px;
+}
 .left-side-stat {
     position: absolute;
     top: 50px;
     left: 0;
-    background: #62d3f5;
+    background: #e9eaea;
+}
+.left-side-stat ul {
+    padding: 0 1em;
+}
+.left-side-stat li {
+    list-style: none;
 }

@@ -1,4 +1,5 @@
 body {
+    font-family: sans-serifl;
     margin: 0;
 }
 header {
@@ -60,20 +61,6 @@ header .menu li:hover::after {
 header .menu a {
     text-decoration: none;
     color: white;
-}
-
-table {
-    width: 100%;
-    text-align: center;
-}
-thead {
-    background: rgb(13, 204, 140);
-    text-transform: uppercase;
-}
-table, tr, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    font-size: 19px;
 }
 .fokontany-container {
     margin: .4em;
