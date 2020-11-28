@@ -11,15 +11,15 @@ class CommunesController extends MainController {
 
     public function __construct($controller, $action) {
         parent::__construct($controller, $action);
-    }
+        }
 
     public function executeIndex(HttpRequest $request) {
         $ressource = new FileRessources();
         $this->communes = $ressource->getRessource('communes');
         $mada = new Madagascar($this->communes);
         $all_communes = $mada->getAllCommune();
-        
-        return $this->render(\compact('all_communes', 'mada'));
+        $css = 'commune.css';
+        return $this->render(\compact('all_communes', 'mada', 'css'));
     }
-    
+
 }

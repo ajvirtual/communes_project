@@ -23,7 +23,10 @@
                 for($i = 0; $i < count($all_communes); $i++) {
                     echo "<tr>
                             <td>".$mada->getCommuneIdByIndex($i)."</td>
-                            <td>".$mada->getCommuneNameByIndex($i)."</td>
+                            <td>
+                                <h2>".$mada->getCommuneNameByIndex($i)."</h2>
+                                <h4>nombres des fokontany : ".count($mada->getCommuneFokontanyByIndex($i))."</h4>
+                            </td>
                             <td>
                             ";
                     for($j = 0; $j < count($mada->getCommuneFokontanyByIndex($i)); $j++) {

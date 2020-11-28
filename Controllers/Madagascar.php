@@ -1,14 +1,15 @@
 <?php
 namespace Controllers;
-    
+use Models\Ressources\FileRessources;
+
 class Madagascar {
     private $all_commune = [];
     private $commune = [];
     private $fokontany = [];
 
-    public function __construct($content) {
-        $this->all_commune = $content;
-
+    public function __construct() {
+        $ressource = new FileRessources();
+        $this->all_commune = $ressource->getRessource('communes');
     }
     
     public function getAllcommune() {

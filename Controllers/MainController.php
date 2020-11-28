@@ -13,7 +13,6 @@ class MainController {
     
     public function render($vars) {
         $request = new HttpRequest();
-        // $router = Router::parse($request);
         \extract($vars);
         ob_start();
         require_once dirname(__DIR__).'/Views/'.$this->controller.'/'.$this->action.'.php'; // all the valid pages

@@ -1,5 +1,8 @@
 <?php
-    require_once 'autoload.php'; 
+
+use Controllers\CommunesController;
+
+require_once 'autoload.php'; 
     class App {
         public function run() {
             $content = file_get_contents('../communes.json');
@@ -10,7 +13,7 @@
             $router = new Libs\Router($request);
             $controller = $router->getController();
             $action = $router->getAction();
-        
+           if(isset($controller) && !empty($controller)) {
             if(in_array($controller, $route)) {
                 $controller_class = "\\Controllers\\".ucfirst($controller)."Controller";
                 $c = new $controller_class($controller, $action);
@@ -23,6 +26,10 @@
                 require_once __DIR__."/Views/error/404.html"; // 404 not found
                 $content = ob_get_clean();
             }  
+           } else {
+                $c = new CommunesController('communes', 'index');
+                $c->executeIndex($request);
+           }
         }
     }
     

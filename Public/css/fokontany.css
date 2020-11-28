@@ -1,5 +1,7 @@
 .main-container {
     display: flex;
+    position: relative;
+    margin-top: 200px;
 }
 .left-side-stat {
     position: absolute;
@@ -26,6 +28,22 @@
     list-style: none;
 }
 
-/* .other-container {
-    position: absolute;
+.content-options ul {
+    list-style: none;
+ 
+}
+.content-options a {
+    text-decoration: none;
+    color: black;
+    /* background: rgb(177, 133, 0); */
+}
+/* .container-options {
+    padding: .5em;
 } */
+
+div#result-options {
+    margin: auto;
+    margin-top: 2em;
+    max-width: max-content;
+    text-align: center;
+}
