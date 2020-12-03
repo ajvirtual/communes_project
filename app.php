@@ -2,10 +2,10 @@
 
 use Controllers\CommunesController;
 
-require_once 'autoload.php'; 
+require_once 'Libs/autoload.php'; 
     class App {
         public function run() {
-            $content = file_get_contents('../communes.json');
+            $content = file_get_contents('../Models/Ressources/communes.json');
             $parsed = json_decode($content);
             // $mada = new \Controllers\Madagascar($parsed);
             $route = ['region', 'district', 'communes', 'fokontany']; 

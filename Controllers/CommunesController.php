@@ -15,7 +15,7 @@ class CommunesController extends MainController {
 
     public function executeIndex(HttpRequest $request) {
         $ressource = new FileRessources();
-        $this->communes = $ressource->getRessource('communes');
+        $this->communes = $ressource->getRessource('../Models/Ressources/communes.json');
         $mada = new Madagascar($this->communes);
         $all_communes = $mada->getAllCommune();
         $css = 'commune.css';

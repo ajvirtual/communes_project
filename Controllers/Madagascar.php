@@ -9,7 +9,7 @@ class Madagascar {
 
     public function __construct() {
         $ressource = new FileRessources();
-        $this->all_commune = $ressource->getRessource('communes');
+        $this->all_commune = $ressource->getRessource('../Models/Ressources/communes.json');
     }
     
     public function getAllcommune() {
