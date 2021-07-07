@@ -21,5 +21,4 @@ class CommunesController extends MainController {
         $css = 'commune.css';
         return $this->render(\compact('all_communes', 'mada', 'css'));
     }
-
 }
